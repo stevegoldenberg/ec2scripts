@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd ~/Downloads/
+unzip sendy-1.1.7.* -d sendy-update/
+rm -rf ~/Downloads/sendy-update/sendy*/uploads/ ~/Downloads/sendy-update/sendy*/.htaccess ~/Downloads/sendy-update/sendy*/includes/config.php 
+perl -pi -e 's/(mail->Send\(\)\;)/\1\n\t\ttime_nanosleep(0, 125000000);/g' /Users/steve/Downloads/sendy-update/sendy*/includes/create/send-now.php
+perl -pi -e 's/(mail->Send\(\)\;)/\1\n\t\t\t\t\t\ttime_nanosleep(0, 125000000);/g' /Users/steve/Downloads/sendy-update/sendy*/scheduled.php
+scp -r -i ~/.ssh/steveTestKey.pem sendy-update/sendy*/* bitnami@mail.interfolio.com:/opt/bitnami/apache2/htdocs/sendy/

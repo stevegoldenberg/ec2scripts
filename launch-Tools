@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ECHO "Starting Tools Instance"
+ec2-start-instances i-7c1eab10
+
+#testInstance=true
+#i=1
+
+#while testInstance; do
+#EHCO "foo" & $i
+#i=$[$i+1]
+
+#done
+
+ECHO "Associating IP" 
+ec2-associate-address -i i-7c1eab10 23.23.83.45
+

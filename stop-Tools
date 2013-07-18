@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ECHO "Stopping Tools Instance"
+ec2-stop-instances i-7c1eab10
+
+
